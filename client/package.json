@@ -11,7 +11,7 @@
         "serve:eleventy": "ELEVENTY_ENV=development NODE_OPTIONS=--experimental-vm-modules eleventy --serve",
         "serve": "npm-run-all clean --parallel serve:*",
         "build:webpack": "webpack --mode production",
-        "build:eleventy": "ELEVENTY_ENV=production eleventy",
+        "build:eleventy": "ELEVENTY_ENV=production NODE_OPTIONS=--experimental-vm-modules eleventy",
         "build": "run-s clean build:*"
     },
     "devDependencies": {

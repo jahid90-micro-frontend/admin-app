@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class Greeter extends LitElement {
+class Layouts extends LitElement {
     static styles = css`
         b {
             color: skyblue;
@@ -12,8 +12,8 @@ class Greeter extends LitElement {
     };
 
     render() {
-        return html`<div>Hello <b>${this.name}</b>!</div>`;
+        return html`<div>This is the layouts page!</div>`;
     }
 }
 
-customElements.define('mf-greeter', Greeter);
+customElements.define('mf-admin-layouts', Layouts);

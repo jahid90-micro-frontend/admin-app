@@ -2,7 +2,7 @@ const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 
 module.exports = (eleventyConfig) => {
     eleventyConfig.addPlugin(litPlugin, {
-        componentModules: ['src/lit/hello.js', 'src/lit/greeter.js'],
+        componentModules: ['src/lit/home.js', 'src/lit/layouts.js'],
     });
 
     eleventyConfig.addWatchTarget('src/lit/');

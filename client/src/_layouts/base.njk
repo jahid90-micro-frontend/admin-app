@@ -7,8 +7,10 @@
     <title>{{ title }}</title>
 
     <link rel="modulepreload" href="/assets/lit_hydrate.bundle.js" />
-    <link rel="modulepreload" href="/assets/hello.bundle.js" />
-    <link rel="modulepreload" href="/assets/greeter.bundle.js" />
+
+    {% for e in ce %}
+      <link rel="modulepreload" href="/assets/{{ e }}.bundle.js" />
+    {% endfor %}
 
     <link rel="stylesheet" type="text/css" href="/assets/main.css" />
     <style>
@@ -46,8 +48,9 @@
 
         await litHydrateSupportInstalled;
 
-        import('/assets/hello.bundle.js');
-        import('/assets/greeter.bundle.js');
+        {% for e in ce %}
+          import('/assets/{{ e }}.bundle.js');
+        {% endfor %}
       })();
     </script>
     <script src="/assets/main.bundle.js"></script>
