@@ -3,14 +3,19 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/scripts/main.js',
+    entry: './src/assets/js/main.js',
     output: {
-        path: path.resolve(__dirname, '_site/assets'),
+        path: path.resolve(__dirname, 'dist/assets'),
         filename: 'main.js',
     },
     plugins: [new MiniCssExtractPlugin()],
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader',
+            },
             {
                 test: /\.css$/,
                 exclude: /node_modules/,

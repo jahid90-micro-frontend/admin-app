@@ -1,3 +1,3 @@
-import '../styles/main.css';
+import '../css/main.css';
 
 console.log('client js loaded');

@@ -1,0 +1,6 @@
+{
+    "name": "Admin App",
+    "description": "An app to manage path-to-page mappings, content data, layout data and widgets metadata for the micro-frontend server framework",
+    "version": "1.0.0",
+    "author": "Jahid"
+}
