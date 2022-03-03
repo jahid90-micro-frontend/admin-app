@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class Layouts extends LitElement {
+class Widgets extends LitElement {
     static styles = css`
         b {
             color: skyblue;
@@ -12,8 +12,8 @@ class Layouts extends LitElement {
     };
 
     render() {
-        return html`<div>Manage layouts</div>`;
+        return html`<div>Manage page id and slot id to widget mappings</div>`;
     }
 }
 
-customElements.define('mf-admin-layouts', Layouts);
+customElements.define('mf-admin-widgets', Widgets);
