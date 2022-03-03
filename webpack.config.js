@@ -3,10 +3,16 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/assets/js/main.js',
+    entry: {
+        main: './src/assets/js/main.js',
+        hello: './src/lit/hello.js',
+        greeter: './src/lit/greeter.js',
+        lit_hydrate: './node_modules/lit/experimental-hydrate-support.js',
+        webcomponents_shadowroot: './node_modules/@webcomponents/template-shadowroot/template-shadowroot.js',
+    },
     output: {
         path: path.resolve(__dirname, 'dist/assets'),
-        filename: 'main.js',
+        filename: '[name].bundle.js',
     },
     plugins: [new MiniCssExtractPlugin()],
     module: {

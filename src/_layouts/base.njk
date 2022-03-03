@@ -6,33 +6,34 @@
 
     <title>{{ title }}</title>
 
-    {# <link rel="modulepreload" href="lit/experimental-hydrate-support.js" />
-    <link rel="modulepreload" href="/lit/hello.js" />
-    <link rel="modulepreload" href="/lit/greeter.js" /> #}
+    <link rel="modulepreload" href="/assets/lit_hydrate.bundle.js" />
+    <link rel="modulepreload" href="/assets/hello.bundle.js" />
+    <link rel="modulepreload" href="/assets/greeter.bundle.js" />
 
     <link rel="stylesheet" type="text/css" href="/assets/main.css" />
-    {# <style>
+    <style>
       body[dsd-pending] {
         display: none;
       }
-    </style> #}
+    </style>
   </head>
+
   <body dsd-pending>
 
-    {# <script>
+    <script>
       if (HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
         document.body.removeAttribute('dsd-pending');
       }
-    </script> #}
+    </script>
 
     {{ content | safe }}
 
-    {# <script type="module">
+    <script type="module">
       (async () => {
-        const litHydrateSupportInstalled = import('lit/experimental-hydrate-support.js');
+        const litHydrateSupportInstalled = import('/assets/lit_hydrate.bundle.js');
 
         if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-          const {hydrateShadowRoots} = await import('@webcomponents/template-shadowroot/template-shadowroot.js');
+          const {hydrateShadowRoots} = await import('/assets/webcomponents_shadowroot.bundle.js');
 
           hydrateShadowRoots(document.body);
           document.body.removeAttribute('dsd-pending');
@@ -40,10 +41,11 @@
 
         await litHydrateSupportInstalled;
 
-        import('/lit/hello.js');
-        import('/lit/greeter.js');
+        import('/assets/hello.bundle.js');
+        import('/assets/greeter.bundle.js');
       })();
-    </script> #}
-    <script src="/assets/main.js"></script>
+    </script>
+    <script src="/assets/main.bundle.js"></script>
+
   </body>
 </html>

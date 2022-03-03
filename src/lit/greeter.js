@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit';
 class Greeter extends LitElement {
     static styles = css`
         b {
-            color: red;
+            color: skyblue;
         }
     `;
 
