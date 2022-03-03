@@ -3,11 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>{{ title }}</title>
+
+    {# <link rel="modulepreload" href="lit/experimental-hydrate-support.js" />
+    <link rel="modulepreload" href="/lit/hello.js" />
+    <link rel="modulepreload" href="/lit/greeter.js" /> #}
+
     <link rel="stylesheet" type="text/css" href="/assets/main.css" />
+    {# <style>
+      body[dsd-pending] {
+        display: none;
+      }
+    </style> #}
   </head>
-  <body>
+  <body dsd-pending>
+
+    {# <script>
+      if (HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+        document.body.removeAttribute('dsd-pending');
+      }
+    </script> #}
+
     {{ content | safe }}
+
+    {# <script type="module">
+      (async () => {
+        const litHydrateSupportInstalled = import('lit/experimental-hydrate-support.js');
+
+        if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
+          const {hydrateShadowRoots} = await import('@webcomponents/template-shadowroot/template-shadowroot.js');
+
+          hydrateShadowRoots(document.body);
+          document.body.removeAttribute('dsd-pending');
+        }
+
+        await litHydrateSupportInstalled;
+
+        import('/lit/hello.js');
+        import('/lit/greeter.js');
+      })();
+    </script> #}
     <script src="/assets/main.js"></script>
   </body>
 </html>
