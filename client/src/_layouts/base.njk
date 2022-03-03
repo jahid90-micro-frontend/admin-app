@@ -6,7 +6,7 @@
 
     <title>{{ title }}</title>
 
-    <link rel="modulepreload" href="/assets/lit_hydrate.bundle.js" />
+    <link rel="modulepreload" href="/assets/lit.bundle.js" />
 
     {% for e in ce %}
       <link rel="modulepreload" href="/assets/{{ e }}.bundle.js" />
@@ -38,10 +38,10 @@
 
     <script type="module">
       (async () => {
-        const litHydrateSupportInstalled = import('/assets/lit_hydrate.bundle.js');
+        const litHydrateSupportInstalled = import('/assets/lit.bundle.js');
 
         if (!HTMLTemplateElement.prototype.hasOwnProperty('shadowRoot')) {
-          const {hydrateShadowRoots} = await import('/assets/webcomponents_shadowroot.bundle.js');
+          const {hydrateShadowRoots} = await import('/assets/webcomponents.bundle.js');
 
           hydrateShadowRoots(document.body);
           document.body.removeAttribute('dsd-pending');
