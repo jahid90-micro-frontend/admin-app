@@ -1,5 +1,11 @@
+const createHomeApp = require('./home');
+
 const createConfig = ({ env }) => {
-    return {};
+    const homeApp = createHomeApp({ env });
+
+    return {
+        homeApp,
+    };
 };
 
 module.exports = createConfig;
