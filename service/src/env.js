@@ -14,6 +14,7 @@ const loadFromEnv = (key) => {
 const createEnv = () => {
     return {
         appName: loadFromEnv('APP_NAME'),
+        eventStoreServiceUri: loadFromEnv('EVENT_STORE_SERVICE_URI'),
         port: parseInt(loadFromEnv('PORT'), 10),
     };
 };
