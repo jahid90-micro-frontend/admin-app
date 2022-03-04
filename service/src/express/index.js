@@ -10,6 +10,11 @@ const createApp = ({ env, config }) => {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
+    if (process.env.NODE_ENV === 'development') {
+        const cors = require('cors');
+        app.use(cors());
+    }
+
     attachMiddlewares({ app, env, config });
     mountRoutes({ app, env, config });
 
