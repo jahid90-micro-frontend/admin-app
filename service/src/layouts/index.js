@@ -27,7 +27,7 @@ const createHttpHandlers = ({ actions }) => {
     };
 
     const handleAddLayout = (req, res) => {
-        const { layout } = req.params;
+        const { layout } = req.body;
 
         actions.addNewLayout({ layout });
 
