@@ -3,16 +3,16 @@ const litPlugin = require('@lit-labs/eleventy-plugin-lit');
 module.exports = (eleventyConfig) => {
     eleventyConfig.addPlugin(litPlugin, {
         componentModules: [
-            'src/lit/home.js',
-            'src/lit/layouts.js',
-            'src/lit/pages.js',
-            'src/lit/slots.js',
-            'src/lit/uris.js',
-            'src/lit/widgets.js',
+            'src/lib/home.js',
+            'src/lib/layouts.js',
+            'src/lib/pages.js',
+            'src/lib/slots.js',
+            'src/lib/uris.js',
+            'src/lib/widgets.js',
         ],
     });
 
-    eleventyConfig.addWatchTarget('src/lit/');
+    eleventyConfig.addWatchTarget('src/lib/');
 
     return {
         dir: {

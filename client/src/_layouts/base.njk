@@ -28,10 +28,10 @@
       }
     </script>
 
-    <div class="flex flex-row container w-screen h-screen">
+    <div class="flex flex-row w-screen h-screen">
       <header class="flex-none w-60 border-r-2 p-5 h-full">{% include "nav.njk" %}</header>
-      <main class="flex-1 p-10">
-        <h1>{{ title  }}</h1>
+      <main class="flex-1 grow p-10">
+        <h1 class='font-medium text-3xl w-100 text-center'>{{ title  }}</h1>
         {{ content | safe }}
       </main>
     </div>
