@@ -22,7 +22,7 @@ const createHomeApp = ({ env, evsClient }) => {
 
     router.get('/', handlers.handleHome);
 
-    console.debug('home app created');
+    console.debug('Created HomeApp');
 
     return router;
 };

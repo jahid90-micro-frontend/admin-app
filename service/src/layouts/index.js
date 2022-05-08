@@ -38,7 +38,7 @@ const createHttpHandlers = ({ actions, queries }) => {
     };
 
     const handleAddLayout = (req, res) => {
-        const { layout } = req.body;
+        const { name: layout } = req.body;
 
         actions.addNewLayout({ layout });
 
@@ -62,7 +62,7 @@ const createLayoutsApp = ({ env }) => {
     router.get('/', handlers.handleAllLayouts);
     router.post('/', handlers.handleAddLayout);
 
-    console.debug('layouts app created');
+    console.debug('Created LayoutsApp');
 
     return router;
 };
