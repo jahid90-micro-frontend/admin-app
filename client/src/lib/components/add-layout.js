@@ -18,7 +18,7 @@ class AddLayoutForm extends LitElement {
         const client = createClient({ serviceUri: 'http://localhost:3000/layouts' });
         client
             .addLayout({ layout: this.layout })
-            .then(() => window.dispatchEvent(new CustomEvent('mf-layout-added')))
+            .then(() => window.dispatchEvent(new CustomEvent('mf-layout-form-added')))
             .catch(() => {});
 
         this.layout = '';
