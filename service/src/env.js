@@ -1,10 +1,10 @@
 if (process.env.NODE_ENV === 'development') {
-    require('dotenv').config();
+    require('dotenv').config({ path: 'dev.env' });
 }
 
 const loadFromEnv = (key) => {
     if (!process.env[key]) {
-        console.error(`Missing env variable [${key}]`);
+        console.error(`Required env variable [${key}] is missing`);
         process.exit(1);
     }
 

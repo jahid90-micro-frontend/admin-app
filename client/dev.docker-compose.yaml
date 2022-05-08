@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+  dev:
+    name: dev
+    driver: bridge
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    image: registry.jahiduls.mint/admin-client:dev
+    container_name: dev-admin-client
+    restart: unless-stopped
+    environment:
+      - PORT=8080
+    ports:
+      - 4000:8080
+    networks:
+      - dev
+    volumes:
+      - ./src:/app/src
+      - ./.eleventy.js:/app/.eleventy.js
+      - ./.eleventyignore:/app/.eleventyignore
+      - ./postcss.config.js:/app/postcss.config.js
+      - ./tailwind.config.js:/app/tailwind.config.js
+      - ./webpack.config.js:/app/webpack.config.js

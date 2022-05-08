@@ -1,0 +1,12 @@
+version: 6
+variables:
+  registry: registry.jahiduls.mint
+commands:
+  dev:service:
+    description: Start a service dev server
+    steps:
+      - run: docker-compose -f service/dev.docker-compose.yaml up -d
+  dev:client:
+    description: Start a client dev server
+    steps:
+      - run: docker-compose -f client/dev.docker-compose.yaml up -d

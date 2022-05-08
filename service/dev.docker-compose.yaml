@@ -1,0 +1,25 @@
+version: '3'
+
+networks:
+  dev:
+    name: dev
+    driver: bridge
+
+services:
+  service:
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    image: registry.jahiduls.mint/admin-service:dev
+    container_name: dev-admin-service
+    restart: unless-stopped
+    environment:
+      - PORT=8080
+    expose:
+      - 8080
+    networks:
+      - dev
+    volumes:
+      - ./src:/app/src
+      - ./bin:/app/bin
+      - ./dev.env:/app/dev.env

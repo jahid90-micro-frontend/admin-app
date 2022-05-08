@@ -8,7 +8,10 @@ const createServer = () => {
     const app = createApp({ env, config });
 
     const signalAppStart = () => {
-        console.table({ name: env.appName, port: env.port });
+        console.table([
+            ['AppName', env.appName],
+            ['Port', env.port],
+        ]);
     };
 
     const start = () => {

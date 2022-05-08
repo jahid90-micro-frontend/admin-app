@@ -6,7 +6,17 @@ const createClient = ({ env }) => {
         timeout: 500,
     });
 
-    return {};
+    const ping = async () => {
+        const result = await client.get('/');
+
+        console.debug(result);
+
+        return result;
+    };
+
+    return {
+        ping,
+    };
 };
 
 module.exports = createClient;
