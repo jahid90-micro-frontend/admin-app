@@ -1,8 +1,13 @@
 const express = require('express');
 
-const createHandlers = () => {
+const createHandlers = ({ env, evsClient }) => {
     const handleHome = (req, res) => {
-        return res.send('OK');
+        evsClient
+            .ping()
+            .then((data) => res.send(data))
+            .catch((err) => {
+                res.status(500).send(err.message);
+            });
     };
 
     return {
@@ -10,12 +15,14 @@ const createHandlers = () => {
     };
 };
 
-const createHomeApp = ({ env }) => {
-    const handlers = createHandlers();
+const createHomeApp = ({ env, evsClient }) => {
+    const handlers = createHandlers({ env, evsClient });
 
     const router = express.Router();
 
     router.get('/', handlers.handleHome);
+
+    console.debug('home app created');
 
     return router;
 };

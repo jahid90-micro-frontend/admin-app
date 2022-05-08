@@ -6,11 +6,10 @@ const createLayoutsApp = require('./layouts');
 const createConfig = ({ env }) => {
     const eventStoreClient = createEventStoreClient({ env });
 
-    const homeApp = createHomeApp({ env });
+    const homeApp = createHomeApp({ env, evsClient: eventStoreClient });
     const layoutsApp = createLayoutsApp({ env });
 
     return {
-        eventStoreClient,
         homeApp,
         layoutsApp,
     };

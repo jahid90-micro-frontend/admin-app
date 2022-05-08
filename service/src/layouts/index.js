@@ -1,6 +1,6 @@
 const express = require('express');
 
-const layouts = [
+const _layouts = [
     {
         id: 1,
         name: 'single-column-with-nav',
@@ -13,7 +13,7 @@ const layouts = [
 
 const createActions = ({ env }) => {
     const addNewLayout = ({ layout }) => {
-        layouts.push({ id: layouts.length, name: layout });
+        _layouts.push({ id: _layouts.length, name: layout });
     };
 
     return {
@@ -21,8 +21,19 @@ const createActions = ({ env }) => {
     };
 };
 
-const createHttpHandlers = ({ actions }) => {
+const createQueries = ({ env }) => {
+    const fetchAllLayouts = () => {
+        return _layouts;
+    };
+
+    return {
+        fetchAllLayouts,
+    };
+};
+
+const createHttpHandlers = ({ actions, queries }) => {
     const handleAllLayouts = (req, res) => {
+        const layouts = queries.fetchAllLayouts();
         res.json(layouts);
     };
 
@@ -43,12 +54,15 @@ const createHttpHandlers = ({ actions }) => {
 
 const createLayoutsApp = ({ env }) => {
     const actions = createActions({ env });
-    const handlers = createHttpHandlers({ actions });
+    const queries = createQueries({ env });
+    const handlers = createHttpHandlers({ actions, queries });
 
     const router = express.Router();
 
     router.get('/', handlers.handleAllLayouts);
     router.post('/', handlers.handleAddLayout);
+
+    console.debug('layouts app created');
 
     return router;
 };

@@ -2,11 +2,27 @@ version: 6
 variables:
   registry: registry.jahiduls.mint
 commands:
-  dev:service:
+  dev:service:start:
     description: Start a service dev server
     steps:
       - run: docker-compose -f service/dev.docker-compose.yaml up -d
-  dev:client:
+  dev:service:stop:
+    description: Stop the service dev server
+    steps:
+      - run: docker-compose -f service/dev.docker-compose.yaml down
+  dev:service:logs:
+    description: Tail the service logs
+    steps:
+      - run: docker-compose -f service/dev.docker-compose.yaml logs -f
+  dev:client:start:
     description: Start a client dev server
     steps:
       - run: docker-compose -f client/dev.docker-compose.yaml up -d
+  dev:client:stop:
+    description: Stop the client dev server
+    steps:
+      - run: docker-compose -f client/dev.docker-compose.yaml down
+  dev:client:logs:
+    description: Tail the service logs
+    steps:
+      - run: docker-compose -f client/dev.docker-compose.yaml logs -f
