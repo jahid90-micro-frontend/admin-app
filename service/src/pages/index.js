@@ -35,7 +35,7 @@ const createQueries = ({ env, evsClient }) => {
 const createHandlers = ({ actions, queries }) => {
     const handleListPages = (req, res) => {
         queries
-            .fetchAllPages({ context: { traceId: req.context.traceId } })
+            .fetchAllPages({ context: { traceId: req.context.requestId } })
             .then((pages) => res.json(pages))
             .catch((err) => res.status(500).send(err.message));
     };
@@ -64,7 +64,7 @@ const createHandlers = ({ actions, queries }) => {
         };
 
         actions
-            .addNewPage({ data: sampleData, context: { traceId: req.context.traceId } })
+            .addNewPage({ data: sampleData, context: { traceId: req.context.requestId } })
             .then(() => res.sendStatus(202))
             .catch((err) => res.status(500).send(err.message));
     };
