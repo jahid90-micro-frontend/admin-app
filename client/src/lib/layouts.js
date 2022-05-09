@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 
 import { init as layoutListInit } from './components/layout-list';
-import { init as addLayoutFormInit } from './components/add-layout';
+import { init as addLayoutFormInit } from './components/add-layout-form';
 
 class Layouts extends LitElement {
     constructor() {
