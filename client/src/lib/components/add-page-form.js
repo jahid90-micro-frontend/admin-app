@@ -2,26 +2,27 @@ import { LitElement, html } from 'lit';
 
 import { createClient } from '../../client';
 
-class AddLayoutForm extends LitElement {
+class AddPageForm extends LitElement {
     constructor() {
         super();
-        this.layout = '';
+        this.page = '';
+
+        this.service = createClient({ serviceUri: 'http://localhost:3000/pages' });
     }
 
-    handleLayoutChange(e) {
-        this.layout = e.target.value;
+    handlePageChange(e) {
+        this.page = e.target.value;
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
-        const client = createClient({ serviceUri: 'http://localhost:3000/layouts' });
-        client
-            .addLayout({ layout: this.layout })
-            .then(() => window.dispatchEvent(new CustomEvent('mf-page-layout-form-added')))
+        this.service
+            .addPage({ page: this.page })
+            .then(() => window.dispatchEvent(new CustomEvent('mf-page-added')))
             .catch(() => {});
 
-        this.layout = '';
+        this.page = '';
         this.renderRoot?.querySelector('form').reset();
     }
 
@@ -30,7 +31,7 @@ class AddLayoutForm extends LitElement {
             <link rel="stylesheet" type="text/css" href="/assets/main.css" />
             <div class="my-5">
                 <form class="flex-row">
-                    <h3 class="font-medium text-xl mb-2">Add page id to layout mappings</h3>
+                    <h3 class="font-medium text-xl mb-2">Add pages</h3>
                     <div class="border-2 flex">
                         <input
                             type="text"
@@ -38,7 +39,7 @@ class AddLayoutForm extends LitElement {
                             id="id"
                             placeholder="id..."
                             class="flex-1 grow focus:border-0 py-2 px-4"
-                            @change=${this.handleLayoutChange}
+                            @change=${this.handlePageChange}
                         />
                         <button class="border-l-2 w-50 py-2 px-4" type="submit" @click=${this.handleSubmit}>Add</button>
                     </div>
@@ -50,7 +51,7 @@ class AddLayoutForm extends LitElement {
                             id="title"
                             placeholder="title..."
                             class="flex-1 grow focus:border-0 py-2 px-4"
-                            @change=${this.handleLayoutChange}
+                            @change=${this.handlePageChange}
                         />
                         <button class="border-l-2 w-50 py-2 px-4" type="submit" @click=${this.handleSubmit}>Add</button>
                     </div>
@@ -62,7 +63,7 @@ class AddLayoutForm extends LitElement {
                             id="layout"
                             placeholder="layout..."
                             class="flex-1 grow focus:border-0 py-2 px-4"
-                            @change=${this.handleLayoutChange}
+                            @change=${this.handlePageChange}
                         />
                         <button class="border-l-2 w-50 py-2 px-4" type="submit" @click=${this.handleSubmit}>Add</button>
                     </div>
@@ -74,7 +75,7 @@ class AddLayoutForm extends LitElement {
                             id="slots"
                             placeholder="slots..."
                             class="flex-1 grow focus:border-0 py-2 px-4"
-                            @change=${this.handleLayoutChange}
+                            @change=${this.handlePageChange}
                         />
                         <button class="border-l-2 w-50 py-2 px-4" type="submit" @click=${this.handleSubmit}>Add</button>
                     </div>
@@ -86,7 +87,7 @@ class AddLayoutForm extends LitElement {
                             id="add slot"
                             placeholder="add slot..."
                             class="flex-1 grow focus:border-0 py-2 px-4"
-                            @change=${this.handleLayoutChange}
+                            @change=${this.handlePageChange}
                         />
                         <button class="border-l-2 w-50 py-2 px-4" type="submit" @click=${this.handleSubmit}>Add</button>
                     </div>
@@ -97,5 +98,5 @@ class AddLayoutForm extends LitElement {
 }
 
 export const init = () => {
-    customElements.define('mf-component-add-page-layout-form', AddLayoutForm);
+    customElements.define('mf-component-add-page-form', AddPageForm);
 };

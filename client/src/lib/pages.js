@@ -1,13 +1,13 @@
 import { LitElement, html, css } from 'lit';
 
-import { init as layoutListInit } from './components/page-layout-list';
-import { init as addLayoutFormInit } from './components/add-page-layout';
+import { init as pageListInit } from './components/page-list';
+import { init as addPageFormInit } from './components/add-page-form';
 
 class Pages extends LitElement {
     constructor() {
         super();
-        layoutListInit();
-        addLayoutFormInit();
+        pageListInit();
+        addPageFormInit();
     }
 
     static styles = css`
@@ -23,9 +23,9 @@ class Pages extends LitElement {
     render() {
         return html` <link rel="stylesheet" type="text/css" href="/assets/main.css" />
             <div>
-                <h2 class="font-medium text-2xl">Manage page id to layout mappings</h2>
-                <mf-component-add-page-layout-form></mf-component-add-page-layout-form>
-                <mf-component-page-layout-list></mf-component-page-layout-list>
+                <h2 class="font-medium text-2xl">Manage pages</h2>
+                <mf-component-add-page-form></mf-component-add-page-form>
+                <mf-component-page-list></mf-component-page-list>
             </div>`;
     }
 }
